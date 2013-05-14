@@ -26,6 +26,30 @@ fail () {
   exit
 }
 
+setup_vim() {
+  info 'setup vim'
+
+  if ! [ -d ~/.vim/autoload ]; then
+    info ' - install pathogen'
+    mkdir -p ~/.vim/autoload ~/.vim/bundle; \
+    curl -Sso ~/.vim/autoload/pathogen.vim \
+      https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  fi
+
+  if ! [ -d ~/.vim/bundle/vim-colors-solarized ]; then
+    info ' - install solarized colour scheme'
+    git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized 2>&1
+  fi
+
+  bundles='commentary eunuch fugitive git haml markdown rails repeat rhubarb surround'
+  for bundle in $bundles; do
+    if ! [ -d ~/.vim/bundle/vim-$bundle ]; then
+      info " - install vim $bundle"
+      git clone git://github.com/tpope/vim-$bundle ~/.vim/bundle/vim-$bundle
+    fi
+  done
+}
+
 setup_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
   then
@@ -116,6 +140,7 @@ install_dotfiles () {
 
 setup_gitconfig
 install_dotfiles
+setup_vim
 
 # If we are on a mac, lets install and setup homebrew
 if [ "$(uname -s)" == "Darwin" ]
