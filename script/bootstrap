@@ -138,8 +138,17 @@ install_dotfiles () {
   done
 }
 
+install_ssh_config() {
+  source="$DOTFILES_ROOT/ssh/.ssh/config.symlink"
+  dest="$HOME/.ssh/config"
+  rm -rf $dest
+  success "removed $dest"
+  link_files $source $dest
+}
+
 setup_gitconfig
 install_dotfiles
+install_ssh_config
 setup_vim
 
 # If we are on a mac, lets install and setup homebrew
