@@ -15,15 +15,14 @@ fi
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)
 
-if [[ -z $TMUX ]]; then
-  # load the path files
-  for file in ${(M)config_files:#*/path.zsh}
-  do
-    source $file
-  done
+export PATH=""
+source /etc/profile
 
-  source /etc/profile
-fi
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
