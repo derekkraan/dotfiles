@@ -46,6 +46,11 @@ setup_vim() {
     git clone git://github.com/slim-template/vim-slim.git ~/.vim/bundle/vim-slim 2>&1
   fi
 
+  if ! [ -d ~/.vim/bundle/vim-coffee-script ]; then
+    info ' - install vim-coffee-script'
+    git clone git://github.com/kchmck/vim-coffee-script ~/.vim/bundle/vim-coffee-script 2>&1
+  fi
+
   bundles='commentary eunuch fugitive git haml markdown rails repeat rhubarb surround'
   for bundle in $bundles; do
     if ! [ -d ~/.vim/bundle/vim-$bundle ]; then
