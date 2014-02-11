@@ -10,5 +10,6 @@ set expandtab
 set smartindent
 set laststatus=2
 set re=1
+set wmh=0
 
 set timeoutlen=1000 ttimeoutlen=0
