@@ -25,3 +25,6 @@ unbind +
 bind + new-window -d -n tmp \; swap-pane -s tmp.0 \; select-window -t tmp
 unbind -
 bind - last-window \; swap-pane -s tmp.0 \; kill-window -t tmp
+
+run-shell "powerline-daemon -q"
+source "/home/vagrant/powerline/powerline/bindings/tmux/powerline.conf"

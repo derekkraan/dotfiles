@@ -1,8 +1,7 @@
-if [[ -n $SSH_CONNECTION ]]; then
-  export PS1='%m:%3~$(git_info_for_prompt)%# '
-else
-  export PS1='%3~$(git_info_for_prompt)%# '
-fi
+export PATH="/home/vagrant/.local/bin:$PATH"
+powerline-daemon -q
+. /home/vagrant/powerline/powerline/bindings/zsh/powerline.zsh
+export PS1='$ '
 
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
