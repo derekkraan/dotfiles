@@ -1,6 +1,6 @@
 export PATH="/home/vagrant/.local/bin:$PATH"
-powerline-daemon -q
-. /home/vagrant/powerline/powerline/bindings/zsh/powerline.zsh
+#powerline-daemon -q
+#. /home/vagrant/powerline/powerline/bindings/zsh/powerline.zsh
 export PS1='$ '
 
 export LSCOLORS="exfxcxdxbxegedabagacad"
