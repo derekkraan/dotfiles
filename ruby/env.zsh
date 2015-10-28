@@ -1,0 +1,1 @@
+export DISABLE_COVERAGE=1

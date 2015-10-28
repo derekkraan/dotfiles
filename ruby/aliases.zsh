@@ -7,3 +7,7 @@ alias sd='script/destroy'
 alias migrate='rake db:migrate db:test:clone'
 
 alias be='bundle exec'
+
+alias cl='for file in log/*log; do echo > $file; done'
+
+alias pspec='DISABLE_SPRING=1 rake spec'

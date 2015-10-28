@@ -1,3 +1,5 @@
+setopt interactivecomments
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/Code/dotfiles
 
@@ -14,6 +16,8 @@ fi
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)
+
+eval "$(rbenv init -)"
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
@@ -40,4 +44,6 @@ done
 unset config_files
 PATH=/usr/local/bin:$PATH
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-eval "$(rbenv init -)"
+
+source ~/.novarc
+eval $(thefuck --alias)

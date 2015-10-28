@@ -10,3 +10,4 @@ then
 fi
 
 alias db="PGPASSWORD=springest psql -U springest springest_development"
+alias psg="ps aux | grep "

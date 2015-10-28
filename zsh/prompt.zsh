@@ -80,7 +80,7 @@ directory_name(){
 }
 
 prompt_symbol(){
-  echo "%{$fg_bold[white]%}$%{$reset_color%}"
+  echo "%{$fg_bold[red]%}>>%{$reset_color%}"
 }
 
 export PROMPT=$'$(git_dirty)$(need_push)$(directory_name) $(prompt_symbol) '

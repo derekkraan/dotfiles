@@ -26,5 +26,13 @@ bind + new-window -d -n tmp \; swap-pane -s tmp.0 \; select-window -t tmp
 unbind -
 bind - last-window \; swap-pane -s tmp.0 \; kill-window -t tmp
 
-run-shell "powerline-daemon -q"
-source "/home/vagrant/powerline/powerline/bindings/tmux/powerline.conf"
+# run-shell "powerline-daemon -q"
+# source "/home/vagrant/powerline/powerline/bindings/tmux/powerline.conf"
+
+# open new tabs / windows in currect directory
+unbind c
+unbind %
+unbind '"'
+bind c new-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind '"' split-window -c "#{pane_current_path}"
