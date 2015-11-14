@@ -14,7 +14,7 @@ git_branch() {
 }
 
 git_dirty() {
-  st=$($git status 2>/dev/null | tail -n 1)
+  st=$($git status 2>/dev/null | tail -r | tail -n 1)
   if [[ $st == "" ]]
   then
     echo ""
@@ -76,7 +76,7 @@ todo(){
 }
 
 directory_name(){
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[blue]%}%1/%\/%{$reset_color%}"
 }
 
 prompt_symbol(){
@@ -85,7 +85,7 @@ prompt_symbol(){
 
 export PROMPT=$'$(git_dirty)$(need_push)$(directory_name) $(prompt_symbol) '
 set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
+  export RPROMPT="%{$fg_bold[blue]%}$(todo)%{$reset_color%}"
 }
 
 # precmd() {
