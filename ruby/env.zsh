@@ -1,1 +1,2 @@
 export DISABLE_COVERAGE=1
+export DISABLE_SPRING=1
