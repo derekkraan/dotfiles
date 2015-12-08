@@ -43,3 +43,5 @@ nnoremap <Leader>c :call VimuxRunCommand("clear; rails console")<CR>
 nnoremap <Leader>t :call VimuxRunCommand("clear; rake")<CR>
 inoremap <C-Space> _
 imap <C-@> <C-Space>
+
+let ruby_no_expensive=1
