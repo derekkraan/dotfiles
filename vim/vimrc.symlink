@@ -38,6 +38,7 @@ nnoremap <Leader>v :sp ~/.vimrc<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>n :n<CR>
+nnoremap <Leader>e :NERDTree<CR>
 let g:vroom_use_vimux = 1
 nnoremap <Leader>c :call VimuxRunCommand("clear; rails console")<CR>
 nnoremap <Leader>t :call VimuxRunCommand("clear; rake")<CR>

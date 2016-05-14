@@ -36,9 +36,14 @@ setup_vim() {
       https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
   fi
 
-  if ! [ -d ~/.vim/bundle/vim-colors-solarized ]; then
-    info ' - install solarized colour scheme'
-    git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized 2>&1
+  if ! [ -d ~/.vim/bundle/apprentice ]; then
+    info ' - install apprentice colour scheme'
+    git clone git://github.com/romainl/Apprentice.git ~/.vim/bundle/apprentice 2>&1
+  fi
+
+  if ! [ -d ~/.vim/bundle/nerdtree ]; then
+    info ' - install nerdtree'
+    git clone git://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree 2>&1
   fi
 
   if ! [ -d ~/.vim/bundle/vim-slim ]; then
@@ -49,11 +54,6 @@ setup_vim() {
   if ! [ -d ~/.vim/bundle/vim-better-whitespace ]; then
     info ' - install vim-better-whitespace'
     git clone git://github.com/ntpeters/vim-better-whitespace.git ~/.vim/bundle/vim-better-whitespace 2>&1
-  fi
-
-  if ! [ -d ~/.vim/bundle/vim-coffee-script ]; then
-    info ' - install vim-coffee-script'
-    git clone git://github.com/kchmck/vim-coffee-script ~/.vim/bundle/vim-coffee-script 2>&1
   fi
 
   bundles='commentary eunuch fugitive git haml markdown rails repeat rhubarb surround'
