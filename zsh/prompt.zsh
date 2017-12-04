@@ -14,7 +14,7 @@ git_branch() {
 }
 
 git_dirty() {
-  st=$($git status 2>/dev/null | tail -r | tail -n 1)
+  st=$($git status 2>/dev/null | head -n 1)
   if [[ $st == "" ]]
   then
     echo ""

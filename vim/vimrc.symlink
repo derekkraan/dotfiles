@@ -1,8 +1,8 @@
-call pathogen#infect()
+execute pathogen#infect()
 syntax on
 au BufRead,BufNewFile *.axlsx setfiletype ruby
 filetype plugin indent on
-set background=dark
+set background=light
 colorscheme apprentice
 set nocompatible
 
@@ -20,20 +20,8 @@ autocmd FileType javascript autocmd BufWritePre <buffer> StripWhitespace
 
 set timeoutlen=1000 ttimeoutlen=0
 
-" python from powerline.vim import setup as powerline_setup
-" python powerline_setup()
-" python del powerline_setup
-
-set wildignore+=*/tmp/*,*.swp,*.zip
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s --files-with-matches --hidden --ignore .git/ --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
-else
-  let g:ctrlp_show_hidden = 1
-endif
-
 let mapleader = ";"
-nnoremap <Leader>f :CtrlP<CR>
+nnoremap <C-P> :Files<CR>
 nnoremap <Leader>v :sp ~/.vimrc<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
