@@ -1,1 +1,1 @@
-export PATH="./bin:$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+export PATH="./bin:$(ruby -e 'print Gem.user_dir')/bin:$PATH"
