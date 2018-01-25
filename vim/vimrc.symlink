@@ -13,10 +13,13 @@ set expandtab
 set smartindent
 set laststatus=2
 set wmh=0
+set autoread
 
 autocmd FileType ruby autocmd BufWritePre <buffer> StripWhitespace
 autocmd FileType html autocmd BufWritePre <buffer> StripWhitespace
 autocmd FileType javascript autocmd BufWritePre <buffer> StripWhitespace
+autocmd BufWritePost *.ex silent !mix format <afile>
+autocmd BufWritePost *.exs silent !mix format <afile>
 
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -28,7 +31,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>n :n<CR>
 nnoremap <Leader>e :NERDTree<CR>
 let g:vroom_use_vimux = 1
-nnoremap <Leader>c :call VimuxRunCommand("clear; rails console")<CR>
-nnoremap <Leader>t :call VimuxRunCommand("clear; rake")<CR>
+nnoremap <Leader>c :terminal rails console<CR>
+nnoremap <Leader>t :terminal<CR>
 
 let ruby_no_expensive=1

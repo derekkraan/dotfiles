@@ -41,3 +41,5 @@ done
 
 unset config_files
 PATH=/usr/local/bin:$PATH
+
+. $HOME/.asdf/asdf.sh
