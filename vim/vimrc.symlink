@@ -15,6 +15,8 @@ set laststatus=2
 set wmh=0
 set autoread
 
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 autocmd FileType ruby autocmd BufWritePre <buffer> StripWhitespace
 autocmd FileType html autocmd BufWritePre <buffer> StripWhitespace
 autocmd FileType javascript autocmd BufWritePre <buffer> StripWhitespace
