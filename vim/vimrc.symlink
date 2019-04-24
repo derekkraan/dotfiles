@@ -1,9 +1,8 @@
 execute pathogen#infect()
 syntax on
-au BufRead,BufNewFile *.axlsx setfiletype ruby
 filetype plugin indent on
 set background=light
-colorscheme apprentice
+colorscheme PaperColor
 set nocompatible
 
 set backspace=2
@@ -33,7 +32,8 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>n :n<CR>
 nnoremap <Leader>e :NERDTree<CR>
 let g:vroom_use_vimux = 1
-nnoremap <Leader>c :terminal rails console<CR>
 nnoremap <Leader>t :terminal<CR>
+nnoremap <Leader>x :terminal mix test<CR>
+nnoremap <Leader>z :terminal mix test %<CR>
 
 let ruby_no_expensive=1

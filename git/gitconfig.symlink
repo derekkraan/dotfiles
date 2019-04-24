@@ -6,8 +6,8 @@
 [user]
         name = Derek Kraan
         email = derek.kraan@gmail.com
-[credential]
-        helper = osxkeychain
+# [credential]
+#         helper = osxkeychain
 [alias]
         co = checkout
         promote = !$ZSH/bin/git-promote
@@ -32,3 +32,7 @@
         autocorrect = 1
 [push]
 	default = current
+[merge]
+	tool = kdiff3
+[diff]
+	guitool = kdiff3
