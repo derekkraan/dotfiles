@@ -6,6 +6,8 @@ export ZSH=$HOME/Code/dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
 
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
