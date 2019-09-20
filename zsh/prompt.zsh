@@ -56,20 +56,13 @@ rb_prompt(){
   fi
 }
 
-# This keeps the number of todos always available the right hand side of my
-# command line. I filter it to only count those tagged as "+next", so it's more
-# of a motivation to clear out the list.
-todo(){
-  if (( $+commands[todo.sh] ))
-  then
-    num=$(echo $(todo.sh ls +next | wc -l))
-    let todos=num-2
-    if [ $todos != 0 ]
-    then
-      echo "$todos"
-    else
-      echo ""
-    fi
+git_repo_info(){
+  git rev-parse --show-toplevel 2> /dev/null | sed 's|.*/||'
+}
+
+git_repo(){
+  if [ -n "$(git_repo_info)" ]; then
+    echo "%{$fg_bold[green]%}[$(git_repo_info)]%{$reset_color%} "
   else
     echo ""
   fi
@@ -83,9 +76,10 @@ prompt_symbol(){
   echo "%{$fg_bold[red]%}>>%{$reset_color%}"
 }
 
-export PROMPT=$'$(git_dirty)$(need_push)$(directory_name) $(prompt_symbol) '
+export PROMPT=$'$(git_repo)$(directory_name) $(prompt_symbol) '
+
 set_prompt () {
-  export RPROMPT="%{$fg_bold[blue]%}$(todo)%{$reset_color%}"
+  export RPROMPT="%{$fg_bold[blue]%}%{$reset_color%}"
 }
 
 # precmd() {
