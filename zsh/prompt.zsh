@@ -68,6 +68,10 @@ git_repo(){
   fi
 }
 
+failure(){
+  if [ $? -ne 0 ]; then echo "%{$fg_bold[red]%}(×_×)%{$reset_color%} "; fi
+}
+
 directory_name(){
   echo "%{$fg_bold[blue]%}%1/%\/%{$reset_color%}"
 }
@@ -76,7 +80,7 @@ prompt_symbol(){
   echo "%{$fg_bold[red]%}>>%{$reset_color%}"
 }
 
-export PROMPT=$'$(git_repo)$(directory_name) $(prompt_symbol) '
+export PROMPT=$'$(failure)$(git_repo)$(directory_name) $(prompt_symbol) '
 
 set_prompt () {
   export RPROMPT="%{$fg_bold[blue]%}%{$reset_color%}"
