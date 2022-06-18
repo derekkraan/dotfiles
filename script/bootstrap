@@ -26,55 +26,6 @@ fail () {
   exit
 }
 
-setup_vim() {
-  info 'setup vim'
-
-  if ! [ -d ~/.vim/autoload ]; then
-    info ' - install pathogen'
-    mkdir -p ~/.vim/autoload ~/.vim/bundle; \
-    curl -Sso ~/.vim/autoload/pathogen.vim \
-      https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-  fi
-
-  if ! [ -d ~/.vim/bundle/apprentice ]; then
-    info ' - install apprentice colour scheme'
-    git clone https://github.com/romainl/Apprentice.git ~/.vim/bundle/apprentice 2>&1
-  fi
-
-  if ! [ -d ~/.vim/bundle/nerdtree ]; then
-    info ' - install nerdtree'
-    git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree 2>&1
-  fi
-
-  if ! [ -d ~/.vim/bundle/vim-elixir ]; then
-    info ' - install vim-elixir'
-    git clone https://github.com/elixir-lang/vim-elixir.git ~/.vim/bundle/vim-elixir 2>&1
-  fi
-
-  if ! [ -d ~/.vim/bundle/vim-javascript ]; then
-    info ' - install vim-javascript'
-    git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-javascript
-  fi
-
-  if ! [ -d ~/.vim/bundle/vim-jsx ]; then
-    info ' - install vim-jsx'
-    git clone https://github.com/mxw/vim-jsx.git ~/.vim/bundle/vim-jsx
-  fi
-
-  if ! [ -d ~/.vim/bundle/vim-better-whitespace ]; then
-    info ' - install vim-better-whitespace'
-    git clone https://github.com/ntpeters/vim-better-whitespace.git ~/.vim/bundle/vim-better-whitespace 2>&1
-  fi
-
-  bundles='commentary eunuch fugitive git haml markdown rails repeat rhubarb surround'
-  for bundle in $bundles; do
-    if ! [ -d ~/.vim/bundle/vim-$bundle ]; then
-      info " - install vim $bundle"
-      git clone https://github.com/tpope/vim-$bundle ~/.vim/bundle/vim-$bundle
-    fi
-  done
-}
-
 setup_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
   then
@@ -88,6 +39,13 @@ setup_gitconfig () {
     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.symlink.example > git/gitconfig.symlink
 
     success 'gitconfig'
+  fi
+}
+
+setup_vim_plug() {
+  if ! [ -d ~/.vim/autoload/plug.vim ]; then
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 }
 
@@ -174,7 +132,7 @@ install_ssh_config() {
 setup_gitconfig
 install_dotfiles
 install_ssh_config
-setup_vim
+setup_vim_plug
 
 # If we are on a mac, lets install and setup homebrew
 if [ "$(uname -s)" == "Darwin" ]

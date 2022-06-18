@@ -1,9 +1,19 @@
-execute pathogen#infect()
 syntax on
 filetype plugin indent on
 set background=light
-colorscheme PaperColor
 set nocompatible
+
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'elixir-editors/vim-elixir'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'NLKNguyen/papercolor-theme'
+call plug#end()
 
 set backspace=2
 set tabstop=2
@@ -14,7 +24,7 @@ set laststatus=2
 set wmh=0
 set autoread
 
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+" let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 autocmd FileType ruby autocmd BufWritePre <buffer> StripWhitespace
 autocmd FileType html autocmd BufWritePre <buffer> StripWhitespace
@@ -37,4 +47,4 @@ nnoremap <Leader>t :terminal<CR>
 nnoremap <Leader>x :terminal mix test<CR>
 nnoremap <Leader>z :terminal mix test %<CR>
 
-let ruby_no_expensive=1
+colorscheme PaperColor
