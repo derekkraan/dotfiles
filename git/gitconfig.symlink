@@ -5,19 +5,15 @@
         protocol = https
 [user]
         name = Derek Kraan
-        email = derek.kraan@gmail.com
+        email = derek@kraan.dev
 # [credential]
 #         helper = osxkeychain
 [alias]
-        co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributers = !$ZSH/bin/git-rank-contributers
-        count   = !git shortlog -sn
-	ci = commit
-	nb = checkout
 	br = branch
 	st = status
+	nb = checkout -b
+	co = checkout
+	ci = commit
 [color]
         diff = auto
         status = auto
@@ -40,3 +36,5 @@
 	tool = kdiff3
 [diff]
 	guitool = kdiff3
+[pull]
+	ff = only
