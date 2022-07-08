@@ -45,3 +45,5 @@ unset config_files
 PATH=/usr/local/bin:$PATH
 
 . $HOME/.asdf/asdf.sh
+
+export FZF_DEFAULT_COMMAND='fd --type f'
