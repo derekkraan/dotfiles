@@ -31,6 +31,7 @@ autocmd FileType html autocmd BufWritePre <buffer> StripWhitespace
 autocmd FileType javascript autocmd BufWritePre <buffer> StripWhitespace
 autocmd BufWritePost *.ex silent !mix format <afile>
 autocmd BufWritePost *.exs silent !mix format <afile>
+autocmd BufWritePost *.heex silent !mix format <afile>
 
 set timeoutlen=1000 ttimeoutlen=0
 
