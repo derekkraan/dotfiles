@@ -47,3 +47,6 @@ PATH=/usr/local/bin:$PATH
 . $HOME/.asdf/asdf.sh
 
 export FZF_DEFAULT_COMMAND='fd --type f'
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform

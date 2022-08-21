@@ -13,6 +13,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 set backspace=2
@@ -32,6 +33,8 @@ autocmd FileType javascript autocmd BufWritePre <buffer> StripWhitespace
 autocmd BufWritePost *.ex silent !mix format <afile>
 autocmd BufWritePost *.exs silent !mix format <afile>
 autocmd BufWritePost *.heex silent !mix format <afile>
+autocmd BufWritePost *.tf silent !terraform fmt <afile>
+autocmd BufWritePost *.hcl silent !packer fmt <afile>
 
 set timeoutlen=1000 ttimeoutlen=0
 
