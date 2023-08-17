@@ -25,7 +25,10 @@ set laststatus=2
 set wmh=0
 set autoread
 
-" let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+" backupcopy=yes fixes an issue where tailwind
+" was not able to watch for changes.
+" This may be fixed in a newer version.
+set backupcopy=yes
 
 autocmd FileType ruby autocmd BufWritePre <buffer> StripWhitespace
 autocmd FileType html autocmd BufWritePre <buffer> StripWhitespace
@@ -35,20 +38,27 @@ autocmd BufWritePost *.exs silent !mix format <afile>
 autocmd BufWritePost *.heex silent !mix format <afile>
 autocmd BufWritePost *.tf silent !terraform fmt <afile>
 autocmd BufWritePost *.hcl silent !packer fmt <afile>
+" autocmd BufWritePost *.json silent !jq '.' <afile> > <afile>
 
 set timeoutlen=1000 ttimeoutlen=0
 
+let g:vroom_use_vimux = 1
+
 let mapleader = ";"
-nnoremap <C-P> :Files<CR>
+nnoremap <C-O> :Rg<CR>
+nnoremap <C-I> :Files<CR>
+nnoremap <C-P> :GFiles<CR>
 nnoremap <Leader>v :sp ~/.vimrc<CR>
 nnoremap <Leader>s :sp ~/.ssh/config<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>n :n<CR>
 nnoremap <Leader>e :NERDTree<CR>
-let g:vroom_use_vimux = 1
 nnoremap <Leader>t :terminal<CR>
 nnoremap <Leader>x :terminal mix test<CR>
 nnoremap <Leader>z :terminal mix test %<CR>
+
+" TODO vimscript for this command that works differently based on extension
+nnoremap <Leader>f :%!jq .<CR>
 
 colorscheme PaperColor
