@@ -130,9 +130,19 @@ install_ssh_config() {
   link_files $source $dest
 }
 
+install_kitty_config() {
+  source="$DOTFILES_ROOT/.config/kitty/kitty.conf.symlink"
+  dest="$HOME/.config/kitty/kitty.conf"
+  rm -rf $dest
+  mkdir -p "$HOME/.config/kitty"
+  success "removed $dest"
+  link_files $source $dest
+}
+
 setup_gitconfig
 install_dotfiles
 install_ssh_config
+install_kitty_config
 setup_vim_plug
 
 # If we are on a mac, lets install and setup homebrew

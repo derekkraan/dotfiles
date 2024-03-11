@@ -4,6 +4,9 @@ setopt INC_APPEND_HISTORY
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/Code/dotfiles
 
+# set escape timeout to be much faster
+export KEYTIMEOUT=1
+
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
 
@@ -42,6 +45,8 @@ do
   source $file
 done
 
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+
 unset config_files
 export PATH=/usr/local/bin:$PATH
 
@@ -52,10 +57,11 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-export PATH=/home/derek/DataGrip-2021.1.3/bin:/home/derek/local/bin:/home/derek/bin:/home/derek/.cache/rebar3/bin:$PATH
+export PATH=/home/derek/DataGrip-2021.1.3/bin:/home/derek/local/bin:/home/derek/bin:/home/derek/.cache/rebar3/bin:/usr/local/bin:~/.nix-profile/bin:$PATH
 
 # source '/home/derek/lib/azure-cli/az.completion'
 
+alias j=just
 alias ls=exa
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
@@ -70,5 +76,8 @@ if [ -f '/home/derek/.google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dere
 
 # direnv
 eval "$(direnv hook zsh)"
+
+export FLYCTL_INSTALL="/home/derek/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 # eval "$(atuin init zsh)"
