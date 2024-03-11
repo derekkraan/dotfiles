@@ -131,7 +131,7 @@ install_ssh_config() {
 }
 
 install_kitty_config() {
-  source="$DOTFILES_ROOT/.config/kitty/kitty.conf.symlink"
+  source="$DOTFILES_ROOT/config/kitty/kitty.conf.symlink"
   dest="$HOME/.config/kitty/kitty.conf"
   rm -rf $dest
   mkdir -p "$HOME/.config/kitty"
