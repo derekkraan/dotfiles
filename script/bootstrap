@@ -139,10 +139,20 @@ install_kitty_config() {
   link_files $source $dest
 }
 
+install_nvim_config() {
+  source="$DOTFILES_ROOT/config/nvim/init.vim.symlink"
+  dest="$HOME/.config/nvim/init.vim"
+  rm -rf $dest
+  mkdir -p "$HOME/.config/nvim"
+  success "removed $dest"
+  link_files $source $dest
+}
+
 setup_gitconfig
 install_dotfiles
 install_ssh_config
 install_kitty_config
+install_nvim_config
 setup_vim_plug
 
 # If we are on a mac, lets install and setup homebrew
