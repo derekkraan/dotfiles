@@ -140,10 +140,15 @@ install_kitty_config() {
 }
 
 install_nvim_config() {
-  source="$DOTFILES_ROOT/config/nvim/init.vim.symlink"
-  dest="$HOME/.config/nvim/init.vim"
-  rm -rf $dest
   mkdir -p "$HOME/.config/nvim"
+  source="$DOTFILES_ROOT/config/nvim/init.lua.symlink"
+  dest="$HOME/.config/nvim/init.lua"
+  rm -rf $dest
+  success "removed $dest"
+  link_files $source $dest
+  source="$DOTFILES_ROOT/config/nvim/config.vim.symlink"
+  dest="$HOME/.config/nvim/config.vim"
+  rm -rf $dest
   success "removed $dest"
   link_files $source $dest
 }

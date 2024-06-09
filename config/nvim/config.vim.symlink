@@ -1,0 +1,72 @@
+syntax off
+filetype plugin indent on
+set background=light
+set nocompatible
+set termguicolors
+set mouse=
+set nohidden
+
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'elixir-editors/vim-elixir'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'EdenEast/nightfox.nvim'
+call plug#end()
+
+set backspace=2
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+set laststatus=2
+set wmh=0
+set autoread
+
+" backupcopy=yes fixes an issue where tailwind
+" was not able to watch for changes.
+" This may be fixed in a newer version.
+set backupcopy=yes
+
+autocmd FileType ruby autocmd BufWritePre <buffer> StripWhitespace
+autocmd FileType html autocmd BufWritePre <buffer> StripWhitespace
+autocmd FileType javascript autocmd BufWritePre <buffer> StripWhitespace
+autocmd BufWritePost *.ex silent !mix format <afile>
+autocmd BufWritePost *.exs silent !mix format <afile>
+autocmd BufWritePost *.heex silent !mix format <afile>
+autocmd BufWritePost *.rs silent !rustfmt <afile>
+" autocmd BufWritePost *.json silent !jq '.' <afile> > <afile>
+
+set timeoutlen=1000 ttimeoutlen=0
+
+let g:vroom_use_vimux = 1
+
+let mapleader = ";"
+nnoremap <C-O> :Rg<CR>
+nnoremap <C-I> :Files<CR>
+nnoremap <C-P> :GFiles<CR>
+" nohlsearch removes highlighting from search
+nnoremap <Leader>c :nohlsearch<CR>
+nnoremap <Leader>v :sp ~/.config/nvim/config.vim<CR>
+nnoremap <Leader>s :sp ~/.ssh/config<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>n :n<CR>
+nnoremap <Leader>e :NERDTree<CR>
+nnoremap <Leader>t :terminal<CR>
+nnoremap <Leader>x :terminal mix test<CR>
+nnoremap <Leader>z :terminal mix test %<CR>
+
+" TODO vimscript for this command that works differently based on extension
+nnoremap <Leader>f :%!jq .<CR>
+
+colorscheme PaperColor
+" colorscheme tokyonight-moon
+" colorscheme nightfox
