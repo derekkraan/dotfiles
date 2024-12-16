@@ -50,7 +50,7 @@ done
 unset config_files
 export PATH=/usr/local/bin:$PATH
 
-. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/asdf.sh
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 
@@ -81,3 +81,4 @@ export FLYCTL_INSTALL="/home/derek/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 # eval "$(atuin init zsh)"
+eval "$(/home/derek/.local/bin/mise activate zsh)"
