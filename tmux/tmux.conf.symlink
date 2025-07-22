@@ -1,16 +1,27 @@
 set -g prefix C-f
 
-set-option -g history-limit 50000
+set-option -g history-limit 200000
 
-set-option -g status-style fg=#FFFFFF,bg=#c00202
+# set-option -g status-style fg=#FFFFFF,bg=#c00202
+# set-option  -ga terminal-overrides  ",xterm-kitty:Tc"
 
 set-option -g focus-events on
+
+# set -g status-bg white
+# set -g status-fg black
+
+# set -g mode-fg black
+# set -g mode-bg white
+
+setw -g mode-style fg=black,bg=white
 
 set -sg escape-time 10
 
 set-window-option -g mode-keys vi
 
-set -g default-terminal "screen-256color"
+set -g default-terminal "tmux-256color"
+
+bind r source-file ~/.tmux.conf
 
 unbind Up
 unbind Down
