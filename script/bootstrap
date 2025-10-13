@@ -139,6 +139,15 @@ install_kitty_config() {
   link_files $source $dest
 }
 
+install_i3_config() {
+  source="$DOTFILES_ROOT/config/i3/config"
+  dest="$HOME/.config/i3/config"
+  rm -rf $dest
+  mkdir -p "$HOME/.config/i3"
+  success "removed $dest"
+  link_files $source $dest
+}
+
 install_nvim_config() {
   mkdir -p "$HOME/.config/nvim"
   source="$DOTFILES_ROOT/config/nvim/init.lua.symlink"
