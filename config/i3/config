@@ -202,6 +202,8 @@ mode "resize" {
 bindsym Mod4+r mode "resize"
 
 input "type:keyboard" {
+  repeat_delay 250
+  repeat_rate 30
   xkb_options ctrl:nocaps
 }
 
