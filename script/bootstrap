@@ -166,6 +166,7 @@ setup_gitconfig
 install_dotfiles
 install_ssh_config
 install_kitty_config
+install_i3_config
 install_nvim_config
 setup_vim_plug
 
