@@ -44,6 +44,8 @@ exec eval $(gnome-keyring-daemon --start)
 
 exec export SSH_AUTH_SOCK
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 workspace 1:work
 assign [class="work"] workspace 1:work
 exec kitty --class work ~/Code/dotfiles/tmux/init_7sage.sh
