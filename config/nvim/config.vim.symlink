@@ -19,6 +19,10 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'EdenEast/nightfox.nvim'
+Plug 'NoahTheDuke/vim-just'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'rktjmp/lush.nvim', { 'as': 'lush' }
+Plug 'zenbones-theme/zenbones.nvim', { 'as': 'zenbones' }
 call plug#end()
 
 set backspace=2
@@ -63,10 +67,13 @@ nnoremap <Leader>e :NERDTree<CR>
 nnoremap <Leader>t :terminal<CR>
 nnoremap <Leader>x :terminal mix test<CR>
 nnoremap <Leader>z :terminal mix test %<CR>
+nnoremap <Leader>r :%s/\s\n/\r/g<CR>
 
 " TODO vimscript for this command that works differently based on extension
 nnoremap <Leader>f :%!jq .<CR>
 
-colorscheme PaperColor
+" colorscheme PaperColor
 " colorscheme tokyonight-moon
 " colorscheme nightfox
+" colorscheme catppuccin-latte
+colorscheme zenbones
