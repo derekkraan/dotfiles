@@ -200,7 +200,7 @@ bindsym Mod4+Shift+0 move container to workspace number $ws10
 bindsym Control+Shift+Mod1+Left move container to workspace prev, workspace prev
 bindsym Control+Shift+Mod1+Right move container to workspace next, workspace next
 
-bindsym Pause exec "playerctl play-pause"
+bindsym --locked Pause exec "playerctl play-pause"
 
 # reload the configuration file
 bindsym Mod4+Shift+c reload
