@@ -37,6 +37,8 @@ unbind n
 bind C-p previous-window
 bind C-n next-window
 
+bind C-y clear-history
+
 set-option -g update-environment "DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION WINDOWID XAUTHORITY"
 
 #maximizing and restoring panes.
