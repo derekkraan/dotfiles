@@ -17,7 +17,7 @@ fi
 
 tmux new-session -d -s $SESSION
 tmux rename-window -t "$SESSION:0" "code"
-tmux send-keys -t "$SESSION:code" "zsh" C-m "cd ~/Code/7sage/phoenix" C-m "clear" C-m "vim" C-m
+tmux send-keys -t "$SESSION:code" "zsh" C-m "cd ~/Code/7sage/phoenix" C-m "clear" C-m "nvim" C-m
 tmux split-window -t "$SESSION:code" -h -p 50
 tmux send-keys -t "$SESSION:code" "cd ~/Code/7sage/phoenix" C-m "clear" C-m
 
