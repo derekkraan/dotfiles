@@ -207,7 +207,7 @@ bindsym Control+Shift+Mod1+Left move container to workspace prev, workspace prev
 bindsym Control+Shift+Mod1+Right move container to workspace next, workspace next
 
 bindsym --locked Pause exec "playerctl play-pause"
-bindsym Print exec "grimshot savecopy area /home/derek/tmp/last_screenshot"
+bindsym Print exec "grimshot savecopy area"
 bindsym Scroll_Lock  exec "grimshot save area - | satty --actions-on-right-click 'save-to-clipboard,save-to-file,exit' --actions-on-enter 'save-to-clipboard,save-to-file,exit' --copy-command wl-copy --initial-tool brush -o '~/Pictures/Screenshots/%Y-%m-%d_%H:%M:%S.png' --filename -"
 
 # reload the configuration file
