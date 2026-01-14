@@ -41,6 +41,7 @@ exec swayidle -w \
 
 # clipboard manager, see: https://github.com/sentriz/cliphist
 exec wl-paste --watch cliphist store
+bindsym Mod4+p exec kitty sh -c "nvim <(wl-paste)"
 
 bindsym Mod4+C exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
