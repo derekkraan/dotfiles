@@ -36,10 +36,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 exec swayidle -w \
-	timeout 600 'swaylock -f -c 555555' \
   timeout 700 'systemctl suspend' \
   resume 'swaymsg "output * power on"' \
-  before-sleep 'swaylock -f -c 555555'
 
 # clipboard manager, see: https://github.com/sentriz/cliphist
 exec wl-paste --watch cliphist store
