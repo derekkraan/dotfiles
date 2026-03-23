@@ -148,6 +148,15 @@ install_i3_config() {
   link_files $source $dest
 }
 
+install_waybar_config() {
+  source="$DOTFILES_ROOT/config/waybar"
+  dest="$HOME/.config/waybar"
+  rm -rf $dest
+  mkdir -p "$HOME/.config"
+  success "removed $dest"
+  link_files $source $dest
+}
+
 install_nvim_config() {
   mkdir -p "$HOME/.config/nvim"
   source="$DOTFILES_ROOT/config/nvim/init.lua.symlink"
@@ -167,6 +176,7 @@ install_dotfiles
 install_ssh_config
 install_kitty_config
 install_i3_config
+install_waybar_config
 install_nvim_config
 setup_vim_plug
 

@@ -33,6 +33,7 @@ set smartindent
 set laststatus=2
 set wmh=0
 set autoread
+set textwidth=80
 
 " backupcopy=yes fixes an issue where tailwind
 " was not able to watch for changes.
