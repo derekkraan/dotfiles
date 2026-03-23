@@ -91,8 +91,15 @@ floating_modifier Mod4
 
 # start a terminal
 bindsym Mod4+Return exec kitty
+
+# start chromium
 bindsym Mod4+t exec chromium --new-window
+
+# start file browser
 bindsym Mod4+f exec nautilus
+
+# start tea timer
+bindsym Mod4+m exec kitty /bin/bash -c 'termdown --no-bell 40 && play ~/gong.mp3'
 
 # kill focused window
 bindsym Mod4+q kill
