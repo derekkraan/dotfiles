@@ -270,7 +270,7 @@ bar swaybar_command waybar
 
 set $gnome_schema org.gnome.desktop.interface
 set $cursor_theme Adwaita
-set $cursor_size 60
+set $cursor_size 50
 exec_always {
   gsettings set $gnome_schema cursor-theme $cursor_theme
   gsettings set $gnome_schema cursor-size $cursor_size
