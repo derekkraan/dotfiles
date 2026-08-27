@@ -56,7 +56,6 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 workspace 1:work
 assign [class="work"] workspace 1:work
 exec kitty --class work ~/Code/dotfiles/tmux/init_7sage.sh
-exec chromium --profile-directory="Work"
 
 workspace 2:messaging
 assign [class="Roam"] workspace 2:messaging
@@ -66,9 +65,10 @@ exec kitty --class "Cmus" cmus
 
 workspace 3:personal
 assign [class="Slack"] workspace 3:personal
-assign [class="obsidian"] workspace 3:personal
-exec chromium --profile-directory="Personal"
 exec slack
+
+workspace 4:obsidian
+assign [class="obsidian"] workspace 4:obsidian
 exec obsidian
 
 # Use pactl to adjust volume in PulseAudio.
