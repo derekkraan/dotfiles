@@ -98,6 +98,7 @@ button:hover {
 #scratchpad,
 #power-profiles-daemon,
 #custom-power,
+#custom-rain,
 #custom-weather,
 #mpd {
     padding: 14px 6px;
@@ -243,6 +244,11 @@ label:focus {
 
 #temperature.critical {
     background-color: #F38BA8;
+    color: #1E1E2E;
+}
+
+#custom-rain {
+    background-color: #FFE45E;
     color: #1E1E2E;
 }
 

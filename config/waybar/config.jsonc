@@ -21,6 +21,7 @@
         "temperature",
         "keyboard-state",
         "tray",
+        "custom/rain",
         "custom/weather",
         "clock"
     ],
@@ -120,7 +121,7 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% \udb81\udfc6"
     },
     "temperature": {
         "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
@@ -128,7 +129,7 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["󰉬", "", "󰉪"]
+        "format-icons": ["\uf2cb", "\uf2ca", "\uf2c9", "\uf2c8", "\uf2c7"]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -192,11 +193,33 @@
         },
         "on-click": "pavucontrol"
     },
+    "custom/rain": {
+        "exec": "$HOME/.config/waybar/rain_window.py",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "interval": 300,
+        "format": "{} \udb81\udd4a"
+    },
     "custom/weather": {
-        "exec": "curl -sf --max-time 10 'https://wttr.in/Utrecht?format=%t' | tr -d '+'",
+        "exec": "$HOME/.config/waybar/weather.sh",
+        "return-type": "json",
         "interval": 900,
-        "format": "{} \uf0c2",
-        "tooltip": false
+        "format": "{} {icon}",
+        "format-icons": {
+            "sunny": "\udb81\udd99",
+            "night-sunny": "\udb81\udd94",
+            "partly": "\udb81\udd95",
+            "night-partly": "\udb83\udf31",
+            "cloudy": "\udb81\udd90",
+            "fog": "\udb81\udd91",
+            "rain": "\udb81\udd97",
+            "pouring": "\udb81\udd96",
+            "sleet": "\udb81\ude7f",
+            "snow": "\udb81\udd98",
+            "heavysnow": "\udb83\udf36",
+            "thunder": "\udb81\ude7e",
+            "unknown": "\udb81\ude25"
+        }
     },
     "custom/media": {
         "format": "{icon} {text}",
