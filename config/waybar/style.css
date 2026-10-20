@@ -98,6 +98,7 @@ button:hover {
 #scratchpad,
 #power-profiles-daemon,
 #custom-power,
+#custom-weather,
 #mpd {
     padding: 14px 6px;
     color: #ffffff;
@@ -161,7 +162,7 @@ button:hover {
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #AC1E92;
+    background-color: #AF1D8E;
     color: #ffffff;
 }
 
@@ -175,12 +176,12 @@ label:focus {
 }
 
 #cpu {
-    background-color: #9F23A4;
+    background-color: #A4229E;
     color: #ffffff;
 }
 
 #memory {
-    background-color: #9029B3;
+    background-color: #9726AC;
     color: #ffffff;
 }
 
@@ -193,7 +194,7 @@ label:focus {
 }
 
 #network {
-    background-color: #B81A7F;
+    background-color: #B91A7D;
     color: #ffffff;
 }
 
@@ -236,7 +237,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #7E2EBF;
+    background-color: #882BB9;
     color: #ffffff;
 }
 
@@ -245,8 +246,13 @@ label:focus {
     color: #1E1E2E;
 }
 
+#custom-weather {
+    background-color: #523ACF;
+    color: #ffffff;
+}
+
 #tray {
-    background-color: #5539CE;
+    background-color: #6735CA;
     color: #ffffff;
 }
 
@@ -295,7 +301,7 @@ label:focus {
 }
 
 #keyboard-state {
-    background: #6B33C8;
+    background: #7830C3;
     color: #ffffff;
     padding: 0 0px;
     margin: 0 5px;
