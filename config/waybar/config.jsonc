@@ -24,6 +24,13 @@
         "clock"
     ],
     // Modules configuration
+    "sway/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "2:messaging": "2:msgs",
+            "3": "3:personal"
+        }
+    },
     // "sway/workspaces": {
     //     "disable-scroll": true,
     //     "all-outputs": true,
