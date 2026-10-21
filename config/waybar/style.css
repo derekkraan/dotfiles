@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "Symbols Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Symbols Nerd Font", "IBM Plex Mono SemiBold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 22px;
 }
 
