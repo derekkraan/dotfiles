@@ -197,8 +197,9 @@
         "exec": "$HOME/.config/waybar/rain_window.py",
         "return-type": "json",
         "hide-empty-text": true,
+        "justify": "center",
         "interval": 300,
-        "format": "{} \udb81\udd4a"
+        "format": "<span font_family='Symbols Nerd Font'>\udb81\udd4a \udb84\udc9c \udb81\udd4a</span>\n<span size='6pt'> </span>\n{}"
     },
     "custom/weather": {
         "exec": "$HOME/.config/waybar/weather.sh",

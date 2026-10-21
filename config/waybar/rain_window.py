@@ -8,6 +8,7 @@ LOCATIONS = os.path.expanduser("~/.config/rain-window/locations")
 TRIP_MINUTES = 20
 STEP_MINUTES = 5
 DRY_MM_PER_HOUR = 0.1
+LINE_GAP = "\n<span size='6pt'> </span>\n"
 BAR_LEVELS = [(16, "█"), (8, "▇"), (4, "▆"), (2, "▅"), (1, "▄"), (0.5, "▃"), (DRY_MM_PER_HOUR, "▂")]
 
 
@@ -35,27 +36,71 @@ def bar(mm_per_hour):
     return next((char for level, char in BAR_LEVELS if mm_per_hour > level), "·")
 
 
+def add_minutes(time, minutes):
+    hours, mins = map(int, time.split(":"))
+    total = (hours * 60 + mins + minutes) % (24 * 60)
+    return f"{total // 60:02d}:{total % 60:02d}"
+
+
+def departure_windows(wet, steps):
+    last = len(wet) - steps
+    windows = []
+    for i in range(last + 1):
+        if any(wet[i:i + steps]):
+            continue
+        if windows and windows[-1][1] == i - 1:
+            windows[-1][1] = i
+        else:
+            windows.append([i, i])
+    return [(start, end, end == last) for start, end in windows]
+
+
+def latest(times, end, open_ended):
+    return f"{times[end]}+" if open_ended else times[end]
+
+
 def summarize(times, rain):
     wet = [mm > DRY_MM_PER_HOUR for mm in rain]
     if not any(wet):
         return {"text": ""}
 
     steps = TRIP_MINUTES // STEP_MINUTES
-    start = next((i for i in range(len(wet) - steps + 1) if not any(wet[i:i + steps])), None)
+    windows = departure_windows(wet, steps)
+    current = windows[0] if windows and windows[0][0] == 0 else None
+    upcoming = [w for w in windows if w is not current]
+    following = upcoming[0] if upcoming else None
 
-    if start is None:
-        text = f">{times[-1]}"
-        verdict = f"No {TRIP_MINUTES}-minute dry window before {times[-1]}"
-    elif start == 0:
-        text = "now"
-        verdict = f"Dry for at least {TRIP_MINUTES} minutes from now"
+    lines = []
+    verdicts = []
+
+    if current:
+        _, end, open_ended = current
+        lines.append(f"→ {times[end]}")
+        verdicts.append(
+            f"Leave by {latest(times, end, open_ended)} to stay dry "
+            f"(arrive {add_minutes(times[end], TRIP_MINUTES)})"
+        )
+    elif wet[0]:
+        verdicts.append("Too wet to leave now")
     else:
-        text = times[start]
-        verdict = f"Next {TRIP_MINUTES}-minute dry window starts at {times[start]}"
+        verdicts.append(f"Dry now, but not for {TRIP_MINUTES} minutes")
+
+    if following:
+        start, end, open_ended = following
+        lines.append(f"{times[start]} →")
+        verdicts.append(
+            f"Next dry window: leave after {times[start]}, until {latest(times, end, open_ended)}"
+        )
+    else:
+        if not current:
+            lines.append(f">{times[-1]}")
+        verdicts.append(f"No {'other ' if current else ''}{TRIP_MINUTES}-minute dry window before {times[-1]}")
 
     bars = "".join(bar(mm) for mm in rain)
-    tooltip = f"Rain at home or work, next 2 hours\n<tt>{times[0]} {bars} {times[-1]}</tt>\n{verdict}"
-    return {"text": text, "tooltip": tooltip, "class": "wet" if wet[0] else "dry"}
+    tooltip = "\n".join(
+        [f"Rain at home or work, next 2 hours", f"<tt>{times[0]} {bars} {times[-1]}</tt>"] + verdicts
+    )
+    return {"text": LINE_GAP.join(lines), "tooltip": tooltip, "class": "dry" if current else "wet"}
 
 
 def main():
