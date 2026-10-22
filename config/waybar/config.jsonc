@@ -195,6 +195,7 @@
     },
     "custom/rain": {
         "exec": "$HOME/.config/waybar/rain_window.py",
+        "on-click": "xdg-open https://www.buienradar.nl/weer/utrecht/nl/2745912",
         "return-type": "json",
         "hide-empty-text": true,
         "justify": "center",

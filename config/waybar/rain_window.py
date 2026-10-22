@@ -8,6 +8,7 @@ LOCATIONS = os.path.expanduser("~/.config/rain-window/locations")
 TRIP_MINUTES = 20
 STEP_MINUTES = 5
 DRY_MM_PER_HOUR = 0.1
+RAIN_ICON = "\U000f0596"
 LINE_GAP = "\n<span size='6pt'> </span>\n"
 BAR_LEVELS = [(16, "█"), (8, "▇"), (4, "▆"), (2, "▅"), (1, "▄"), (0.5, "▃"), (DRY_MM_PER_HOUR, "▂")]
 
@@ -93,7 +94,7 @@ def summarize(times, rain):
         )
     else:
         if not current:
-            lines.append(f">{times[-1]}")
+            lines.append(f"{RAIN_ICON} {times[-1]}+")
         verdicts.append(f"No {'other ' if current else ''}{TRIP_MINUTES}-minute dry window before {times[-1]}")
 
     bars = "".join(bar(mm) for mm in rain)
