@@ -16,9 +16,14 @@ set-option -g focus-events on
 setw -g mode-style fg=black,bg=white
 
 set -as terminal-features ",xterm-kitty:RGB"
-set -g status-style fg=#FFFFFF,bg=#4A1A63
-setw -g window-status-current-style fg=#FFFFFF,bg=#C2186B,bold
-set -g message-style fg=#FFFFFF,bg=#7E2EBF
+set -g status-style fg=#383a42,bg=#ece3f5
+setw -g window-status-current-style fg=#ffffff,bg=#c2186b,bold
+setw -g window-status-style fg=#383a42,bg=#d6c3ea
+set -g message-style fg=#ffffff,bg=#7e2ebf
+setw -g window-status-format '  #I  #W#{?window_zoomed_flag, +,}  '
+setw -g window-status-current-format '  #I  #W#{?window_zoomed_flag, +,}  '
+setw -g window-status-separator ' '
+set -g status-justify centre
 
 set -sg escape-time 10
 
